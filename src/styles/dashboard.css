@@ -1,0 +1,25 @@
+.main-actions-container{
+    flex-direction: column;
+    display: flex;
+    align-content: center;
+    text-align: left;
+    margin: 20px;
+    background-color: var(--main-color);
+    padding: 20px;
+}
+
+.add-user-form button{
+    margin-left: 10px;
+}
+
+.list-of-users{
+    width: 50%;
+}
+
+.list-of-users tr{
+}
+
+.list-of-users tr td{
+    /* border: 1px solid white; */
+    padding: 10px;
+}

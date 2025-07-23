@@ -27,6 +27,7 @@ button:hover{
 
 a{
   color:white;
+  cursor: pointer;
 }
 
 a:hover{

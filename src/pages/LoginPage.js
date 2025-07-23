@@ -1,14 +1,21 @@
 
+import { Navigation } from 'lucide-react';
 import '../styles/login.css'
 import { useNavigate } from "react-router-dom";
 
 
 function LoginPage(){
+    // Navigation
     const navigate = useNavigate();
 
     const handleLanding = () => {
         navigate('/')
     }
+
+    const handleDashboard = () => {
+        navigate('/DashboardPage');
+    }
+    // Navigation
     return(
         <div className="main-login">  
             <div className="login-element">
@@ -24,7 +31,7 @@ function LoginPage(){
                     
                     <a id="link" href='#'>Forgot Pasword?</a>
                 </div>
-                <button className='sign-in'>Sign In</button>
+                <button className='sign-in' onClick={handleDashboard}>Sign In</button>
                 <a id="link" onClick={handleLanding} href='#'>Home</a>
             </div>
         </div>

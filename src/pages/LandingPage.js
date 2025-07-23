@@ -45,19 +45,19 @@ function LandingPage(){
                         </div>
                         <div className="cards">
                             <img className="profile-img" src={BlankProfile} alt="Profile" />
-                            <p>Your Name here</p>
+                            <p>Jerney Bryant Macayanan</p>
                         </div>
                         <div className="cards">
                             <img className="profile-img" src={BlankProfile} alt="Profile" />
-                            <p>Your Name here</p>
+                            <p>Juan Miguel Soriano</p>
                         </div>
                         <div className="cards">
                             <img className="profile-img" src={BlankProfile} alt="Profile" />
-                            <p>Your Name here</p>
+                            <p>Gabriel Pagcu</p>
                         </div>
                         <div className="cards">
                             <img className="profile-img" src={BlankProfile} alt="Profile" />
-                            <p>Your Name here</p>
+                            <p>Julian Matthew Guintu</p>
                         </div>
                     </div>
                 </div>
