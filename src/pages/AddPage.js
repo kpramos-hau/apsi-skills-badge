@@ -2,7 +2,8 @@ import Sidebar from '../components/Sidebar';
 import '../styles/dashboard.css'
 import { useState, useEffect } from 'react'
 import { Outlet } from 'react-router-dom';
-import { User, UserPlus } from 'lucide-react';
+import { Save } from 'lucide-react';
+import '../styles/add.css'
 function AddPage(){
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -27,31 +28,41 @@ function AddPage(){
         }
     }; 
     return (
-        <div className="main-actions-container">
-            <h2>Add User</h2>
-
-            <div className='add-user-form' style={{ marginBottom: '10px' }}>
-                <input
-                    type="text"
-                    value={newUserName}
-                    placeholder="New user name"
-                    onChange={e => setNewUserName(e.target.value)}
-                />
-                <button onClick={addUser}>Add User</button>
+        <div className="add-actions-container">
+            <h1>Add User</h1>
+            <div className='add-form-container'>
+                <form className='add-form' onSubmit={'#'}>
+                    <input className='input-form' type="number" name="id"required placeholder='ID'/>
+                    <input className='input-form' type="text" name="name"required placeholder='Name' />
+                    <input className='input-form' type="text" name="username"required placeholder='Username'/>
+                    <input className='input-form' type="email" name="email"  required placeholder='Email'/>
+                    <input className='input-form' type="text" name="company"required placeholder='Company'/>
+                    <button className='input-button' type="submit"><Save/>Save</button>
+                </form>
             </div>
-
-            {users.length > 0 && (
-                <div>
-                    <h3>Added Users:</h3>
-                    <ul>
-                        {users.map(user => (
-                            <li key={user.id}>{user.name}</li>
-                        ))}
-                    </ul>
-                </div>
-            )}
         </div>
     );
 }
 
 export default AddPage;
+
+            // <div className='add-user-form' style={{ marginBottom: '10px' }}>
+            //     <input
+            //         type="text"
+            //         value={newUserName}
+            //         placeholder="New user name"
+            //         onChange={e => setNewUserName(e.target.value)}
+            //     />
+            //     <button onClick={addUser}>Add User</button>
+            // </div>
+
+            // {users.length > 0 && (
+            //     <div>
+            //         <h3>Added Users:</h3>
+            //         <ul>
+            //             {users.map(user => (
+            //                 <li key={user.id}>{user.name}</li>
+            //             ))}
+            //         </ul>
+            //     </div>
+            // )}

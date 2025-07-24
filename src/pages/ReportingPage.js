@@ -28,9 +28,10 @@ function ReportingPage(){
     };
 
     return(
-        <div className="main">
-            <div className="record-container">
-                <table>
+        <div className="main-reports-container">
+            <h1>Reports</h1>
+            <div className='reports-container'>
+                <table className='list-of-users'>
                        <tr>
                             <th>ID</th>
                             <th>Name</th>

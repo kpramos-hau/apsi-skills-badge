@@ -1,8 +1,10 @@
 import Sidebar from '../components/Sidebar';
-import '../styles/dashboard.css'
+import '../styles/edit.css'
 import { useState, useEffect } from 'react'
 import { Outlet } from 'react-router-dom';
 import { Pencil, Trash } from 'lucide-react';
+import { useNavigate } from 'react-router-dom'
+import { Plus } from 'lucide-react'
 
 function EditPage(){
     const [users, setUsers] = useState([]);
@@ -78,33 +80,52 @@ function EditPage(){
         }
     };
 
+    const navigate = useNavigate();
+
+    const handleAdd = () =>{
+        navigate('/DashBoardPage/add')
+    }
+
     return(
         <div className='main-actions-container'>
-            <div className='add-user-form' style={{ marginBottom: '10px' }}>
-                <input
-                type="text"
-                value={newUserName}
-                placeholder="New user name"
-                onChange={e => setNewUserName(e.target.value)}
-                />
-                <button onClick={addUser}>Add User</button>
+            <div className='edit-header-container'>
+                <h1>Manage Records</h1>
+                <button className='add-page-button' onClick={handleAdd}><Plus size={30}/>Add User</button>
             </div>
-
+            
             {/* Loading/Error states */}
             {loading && <p>Loading users...</p>}
             {error && <p style={{ color: 'red' }}>Error: {error}</p>}
 
+        <div className='table-container'>
             {/* List of users */}
             <table className='list-of-users'>
-                {users.map(user => (
-                    <tr key={user.id}>
-                    <td className='list-of-users-id'><strong>[{user.id}]</strong></td>
-                    <td className='list-of-users-name'>{user.name}</td>
-                    <td><button onClick={() => updateUser(user.id)}><Pencil/></button>{' '}</td>
-                    <td><button onClick={() => deleteUser(user.id)}><Trash/></button></td>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Company</th>
+                        <th>Actions</th>
                     </tr>
-                    ))}
-            </table>
+                </thead>
+                <tbody>
+                    {users.map(user => (
+                        <tr key={user.id}>
+                        <td className='list-of-users-id'><strong>[{user.id}]</strong></td>
+                        <td className='list-of-users-name'>{user.name}</td>
+                        <td>{user.username}</td>
+                        <td>{user.email}</td>
+                        <td>{user.company['name']}</td>
+                        <td>
+                            <a className="edit-icon"onClick={() => updateUser(user.id)}><Pencil size={18}/></a>
+                            <a className="delete-icon"  onClick={() => deleteUser(user.id)}><Trash size={18}/></a></td>
+                        </tr>
+                        ))}
+                </tbody>
+                </table>
+            </div>
         </div>
     )
 }
