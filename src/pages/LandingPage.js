@@ -1,7 +1,8 @@
 import React from "react";
+import Header from '../components/Header';
+import ProfileCard from '../components/ProfileCard';
 import '../styles/landing.css'
 import { LogInIcon } from "lucide-react";
-import  BlankProfile from "../images/blankProfile.svg";
 import { useNavigate } from "react-router-dom";
 
 function LandingPage(){
@@ -10,21 +11,18 @@ function LandingPage(){
     const handleLogin = () =>{
         navigate('/LoginPage');
     };
+    
+    const people = [
+        "Kevin Zeke Ramos",
+        "Jerney Bryant Macayanan",
+        "Juan Miguel Soriano",
+        "Gabriel Pagcu",
+        "Julian Mathew Guintu"
+    ];
 
     return(
         <div className="main-container">
-            <div className="header">
-                <div className="left">
-                    <h1>Logo </h1>
-                    <ul className="header-list">
-                        <li><a href='https://github.com/kpramos-hau/apsi-skills-badge'>GitHub</a></li>
-                        <li><a href='#'>Sources</a></li>
-                    </ul>
-                </div>
-                    <div className="right">
-                        <button className="header-button" onClick={handleLogin}>Sign in</button>
-                    </div>
-                </div>      
+            <Header />
             <div className="main">
                 <div className="main-content">
                     <div className="left-content">
@@ -39,26 +37,9 @@ function LandingPage(){
                 <div className="about">
                     <h1>About Us</h1>
                     <div className="cards-container">
-                        <div className="cards">
-                            <img className="profile-img" src={BlankProfile} alt="Profile" />
-                            <p>Kevin Zeke Ramos</p>
-                        </div>
-                        <div className="cards">
-                            <img className="profile-img" src={BlankProfile} alt="Profile" />
-                            <p>Jerney Bryant Macayanan</p>
-                        </div>
-                        <div className="cards">
-                            <img className="profile-img" src={BlankProfile} alt="Profile" />
-                            <p>Juan Miguel Soriano</p>
-                        </div>
-                        <div className="cards">
-                            <img className="profile-img" src={BlankProfile} alt="Profile" />
-                            <p>Gabriel Pagcu</p>
-                        </div>
-                        <div className="cards">
-                            <img className="profile-img" src={BlankProfile} alt="Profile" />
-                            <p>Julian Matthew Guintu</p>
-                        </div>
+                        {people.map(name => (
+                            <ProfileCard key={name} name={name} />
+                        ))}
                     </div>
                 </div>
             </div>
