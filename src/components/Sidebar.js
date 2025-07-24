@@ -17,7 +17,7 @@ function Sidebar (){
             </div>
             <div className="sidebar-buttons">
                 <ul id="sidebar-links">
-                    <li className="sidebar-links-2"><Link to="/DashboardPage/dashboard"><LayoutDashboard />Dashboard</Link></li>
+                    <li className="sidebar-links-2"><Link to="/DashboardPage/overview"><LayoutDashboard />Dashboard</Link></li>
                     <li className="sidebar-links-2"><Link to="/DashBoardPage/add"><Plus/>Add</Link></li>
                     <li className="sidebar-links-2"><Link to="/DashboardPage/edit"><Pencil/>Edit</Link></li>
                     <li className="sidebar-links-2"><Link to="/DashboardPage/report"><ClipboardMinus/>Reports</Link></li>
