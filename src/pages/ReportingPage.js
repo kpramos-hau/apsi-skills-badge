@@ -1,1 +1,5 @@
-ReportingPage.js
+function ReportingPage(){
+
+}
+
+export default ReportingPage;

@@ -23,3 +23,7 @@
     /* border: 1px solid white; */
     padding: 10px;
 }
+
+.main-content-container{
+    display: flex;
+}

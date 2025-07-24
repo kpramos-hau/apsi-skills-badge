@@ -28,8 +28,15 @@ button:hover{
 a{
   color:white;
   cursor: pointer;
+  text-decoration: none;
 }
+
 
 a:hover{
   color:#6d6d6d
+}
+
+li{
+  list-style: none;
+  text-decoration: none;
 }

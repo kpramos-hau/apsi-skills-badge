@@ -1,10 +1,10 @@
-// import { Sidebar } from 'lucide-react';
 import Sidebar from '../components/Sidebar';
 import '../styles/dashboard.css'
 import { useState, useEffect } from 'react'
 import { Outlet } from 'react-router-dom';
+import { Pencil, Trash } from 'lucide-react';
 
-function DashboardPage(){
+function EditPage(){
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -78,62 +78,35 @@ function DashboardPage(){
         }
     };
 
-    // --------- Render -----------
     return(
-        <div className='main-content-container'>
-            <Sidebar />
-            <main >
-                <Outlet />
-            </main>
-        </div>    
-    );
+        <div className='main-actions-container'>
+            <div className='add-user-form' style={{ marginBottom: '10px' }}>
+                <input
+                type="text"
+                value={newUserName}
+                placeholder="New user name"
+                onChange={e => setNewUserName(e.target.value)}
+                />
+                <button onClick={addUser}>Add User</button>
+            </div>
+
+            {/* Loading/Error states */}
+            {loading && <p>Loading users...</p>}
+            {error && <p style={{ color: 'red' }}>Error: {error}</p>}
+
+            {/* List of users */}
+            <table className='list-of-users'>
+                {users.map(user => (
+                    <tr key={user.id}>
+                    <td className='list-of-users-id'><strong>[{user.id}]</strong></td>
+                    <td className='list-of-users-name'>{user.name}</td>
+                    <td><button onClick={() => updateUser(user.id)}><Pencil/></button>{' '}</td>
+                    <td><button onClick={() => deleteUser(user.id)}><Trash/></button></td>
+                    </tr>
+                    ))}
+            </table>
+        </div>
+    )
 }
 
-export default DashboardPage;
-
-// Sidebar
-{/* <div className="left-sidebar">
-                <h1>DashboardPage</h1>
-                <div className='left-sidebar-actions'>
-                    <ul>
-                        <li><a>Add</a></li>
-                        <li><a>Edit</a></li>
-                        <li><a>Delete</a></li>
-                        <li><a>Report</a></li>
-                    </ul>
-                </div>
-            </div> */}
-
-
-//  {/* <h1>API Integration Demo (JSONPlaceholder)</h1>
-
-//             <div className='main-actions-container'>
-
-//                 {/* Add user form */}
-//                 <div className='add-user-form' style={{ marginBottom: '10px' }}>
-//                     <input
-//                     type="text"
-//                     value={newUserName}
-//                     placeholder="New user name"
-//                     onChange={e => setNewUserName(e.target.value)}
-//                     />
-//                     <button onClick={addUser}>Add User</button>
-//                 </div>
-
-//                 {/* Loading/Error states */}
-//                 {loading && <p>Loading users...</p>}
-//                 {error && <p style={{ color: 'red' }}>Error: {error}</p>}
-
-//                 {/* List of users */}
-//                 <table className='list-of-users'>
-//                     {users.map(user => (
-//                         <tr key={user.id}>
-//                         <td className='list-of-users-id'><strong>[{user.id}]</strong></td>
-//                         <td className='list-of-users-name'>{user.name}</td>
-//                         <td><button onClick={() => updateUser(user.id)}>Edit</button>{' '}</td>
-//                         <td><button onClick={() => deleteUser(user.id)}>Delete</button></td>
-//                         </tr>
-//                         ))}
-//                 </table>
-//             </div>
-//         </div> */}
+export default EditPage;

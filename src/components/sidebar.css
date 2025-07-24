@@ -1,0 +1,35 @@
+.sidebar{
+    display:flex;
+    flex-direction: column;
+    background-color: var(--main-color);
+    padding: 18px;
+    width: 250px;
+    min-height: 100vh;
+
+}
+
+.sidebar-buttons{
+    display: flex;
+}
+
+#sidebar-links{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.sidebar-links-2 a{
+    display: flex; 
+    align-items: center;
+    gap: 10px;
+}
+
+#logout-button{
+    padding: 8px;
+    width: 100%;
+}
+
+.logout-container{
+    margin-top: auto;
+}
