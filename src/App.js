@@ -4,6 +4,7 @@ import LoginPage from './pages/LoginPage';
 import DashboardPage from './pages/DashboardPage';
 import AddPage from './pages/AddPage';
 import EditPage from './pages/EditPage';
+import ReportingPage from './pages/ReportingPage';
 import './App.css';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         {/* <Route path="dashboard" element={<DashboardPage />} />  */}
         <Route path="add" element={<AddPage />} />
         <Route path="edit" element={<EditPage />} />
+        <Route path="report" element={<ReportingPage />} />
       </Route>
     </Routes>
   );
