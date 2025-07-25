@@ -1,23 +1,22 @@
-import Sidebar from '../components/Sidebar';
 import '../styles/dashboard.css'
 import { useState, useEffect } from 'react'
-import { Outlet } from 'react-router-dom';
 import { Save } from 'lucide-react';
 import '../styles/add.css'
+import { supabase } from '../supabaseClient';
+
 
 function AddPage(){
     //State to hold the for data for a new user
     const [newUser, setNewUser] = useState ({
-        id: '',
         name: '',
         username: '',
         email: '',
-        company: { name: '' }
+        company: ''
     });
     //const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const API_URL = 'https://jsonplaceholder.typicode.com/users';
+    // const API_URL = 'https://jsonplaceholder.typicode.com/users';
 
     // Handle input changes and update
     const handleChange = (e) => {
@@ -25,7 +24,7 @@ function AddPage(){
         if (name === "company") {
             setNewUser(prev => ({
                 ...prev,
-                company: { name: value }
+                company: value
             }));
         } else {
             setNewUser(prev => ({
@@ -42,21 +41,15 @@ function AddPage(){
         setLoading(true);
         setError(null);
         try {
-            const res = await fetch(API_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(newUser),
-            });
-            
-            if (!res.ok) throw new Error('Failed to add user');
-            const addedUser = await res.json();
-            console.log('User added:', addedUser); // Log the added user
+
+            const { error } = await supabase.from('users').insert([newUser])
+            if (error) throw error;
+
             setNewUser({
-                id: '',
                 name: '',
                 username: '',
                 email: '',
-                company: { name: '' }
+                company: '',
             });
             alert('User added successfully!');
         } catch (err) {
@@ -71,7 +64,6 @@ function AddPage(){
             <h1>Add User</h1>
             <div className='add-form-container'>
                 <form className='add-form' onSubmit={handleSubmit}>
-                    <input className='input-form' type="number" name="id" required placeholder='ID' value={newUser.id} onChange={handleChange} />
                     <input className='input-form' type="text" name="name" required placeholder='Name' value={newUser.name} onChange={handleChange} />
                     <input className='input-form' type="text" name="username" required placeholder='Username' value={newUser.username} onChange={handleChange} />
                     <input className='input-form' type="email" name="email" required placeholder='Email' value={newUser.email} onChange={handleChange} />

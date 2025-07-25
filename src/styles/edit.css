@@ -80,4 +80,26 @@
 .table-container{
     border: 1px solid var(--body-color);
     border-radius: 12px;
+    padding:0;
+    overflow: auto;
+    max-height: 100%;
+
+}
+
+
+.inline-input {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid #ce2222;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #413e3e;
+  transition: border 0.2s ease;
+  color:white
+}
+
+.inline-input:focus {
+  outline: none;
+  border-color: var(--accent-color, #6c63ff); /* customize as needed */
+  background-color: #fff;
 }

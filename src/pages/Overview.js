@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Users, UserPlus, Edit, ClipboardList, Loader2 } from 'lucide-react';
 import '../styles/overview.css'; 
+import { supabase } from '../supabaseClient';
 
 function Overview() {
     const [userCount, setUserCount] = useState(0);
@@ -11,27 +12,29 @@ function Overview() {
 
     const API_URL = 'https://jsonplaceholder.typicode.com/users';
 
+    //counter and fetch
     useEffect(() => {
-        const fetchUserCount = async () => {
-            setLoading(true);
-            setError(null);
-            try {
-                const response = await fetch(API_URL);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const data = await response.json();
-                setUserCount(data.length);
-            } catch (err) {
-                console.error("Failed to fetch user count:", err);
-                setError("Failed to load user data. Please try again later.");
-            } finally {
-                setLoading(false);
-            }
-        };
+    const fetchUserCount = async () => {
+        setLoading(true);
+        setError(null);
+        try {
+            const { count, error } = await supabase
+                .from('users')
+                .select('*', { count: 'exact', head: true });
 
-        fetchUserCount();
-    }, []); 
+            if (error) throw error;
+
+            setUserCount(count);
+        } catch (err) {
+            console.error("Failed to fetch user count:", err);
+            setError("Failed to load user data. Please try again later.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    fetchUserCount();
+}, []);
 
     // Handlers for navigation to different pages
     const handleAddUser = () => {
