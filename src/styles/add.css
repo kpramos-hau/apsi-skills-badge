@@ -43,7 +43,8 @@
     border: 1px solid var(--body-color);
     border-radius: 6px;
     background-color:rgb(44, 44, 44);
-    color: white
+    color: white;
+    padding-left: 10px;
 }
 .input-button{
     display:flex;
