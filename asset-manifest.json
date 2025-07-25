@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/apsi-skills-badge/static/css/main.4b22daf5.css",
+    "main.js": "/apsi-skills-badge/static/js/main.b5ef1248.js",
+    "static/js/453.575d04a7.chunk.js": "/apsi-skills-badge/static/js/453.575d04a7.chunk.js",
+    "index.html": "/apsi-skills-badge/index.html",
+    "static/media/blankProfile.svg": "/apsi-skills-badge/static/media/blankProfile.09187e8f10599a1a473c71aaf8a053e0.svg",
+    "main.4b22daf5.css.map": "/apsi-skills-badge/static/css/main.4b22daf5.css.map",
+    "main.b5ef1248.js.map": "/apsi-skills-badge/static/js/main.b5ef1248.js.map",
+    "453.575d04a7.chunk.js.map": "/apsi-skills-badge/static/js/453.575d04a7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4b22daf5.css",
+    "static/js/main.b5ef1248.js"
+  ]
+}
