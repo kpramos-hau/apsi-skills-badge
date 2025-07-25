@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import '../styles/reporting.css'
 import { supabase } from '../supabaseClient';
-
+import { RefreshCw } from 'lucide-react';
 
 function ReportingPage(){
     const [users, setUsers] = useState([]);
@@ -43,7 +43,13 @@ function ReportingPage(){
 
     return(
         <div className="main-reports-container">
-            <h1>Reports</h1>
+            <div className="reports-header">
+                <h1>Reports</h1>
+                <button onClick={fetchUsers} disabled={loading} className="refresh-btn">
+                    <RefreshCw size={20} />
+                    {loading ? 'Refreshing...' : 'Refresh'}
+                </button>
+            </div>
             <div className='reports-container'>
                 {loading && <p>Loading...</p>}
                 {error && <p style={{ color: 'red' }}>Error: {error}</p>}
