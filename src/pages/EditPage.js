@@ -124,7 +124,7 @@ function EditPage(){
                     <tbody>
                         {users.map(user => (
                             <tr key={user.id}>
-                                <td><strong>[{user.id}]</strong></td>
+                                <td><strong>{user.id}</strong></td>
                                 {editUserId === user.id ? (
                                     <>
                                         <td><input className="inline-input" name="name" value={editFormData.name} onChange={handleEditChange} /></td>
