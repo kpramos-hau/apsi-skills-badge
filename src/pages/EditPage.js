@@ -1,84 +1,95 @@
-import Sidebar from '../components/Sidebar';
 import '../styles/edit.css'
 import { useState, useEffect } from 'react'
-import { Outlet } from 'react-router-dom';
-import { Pencil, Trash } from 'lucide-react';
+import { Pencil, Trash, Plus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom'
-import { Plus } from 'lucide-react'
+import { supabase } from '../supabaseClient';
+
 
 function EditPage(){
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [newUserName, setNewUserName] = useState('');
-    const API_URL = 'https://jsonplaceholder.typicode.com/users';
+    const [editUserId, setEditUserId] = useState(null);
+    const [editFormData, setEditFormData] = useState({
+        name: '',
+        username: '',
+        email: '',
+        company: ''
+    });
 
     // ---------- GET: Fetch all users ----------
-    useEffect(() => {
-        fetchUsers();
-    }, []);
-
     const fetchUsers = async () => {
-        setLoading(true);
-        setError(null);
+          setLoading(true);
+          setError(null);
+          const { data, error } = await supabase.from('users').select('*');
+          console.log('Fetched data:', data);
+          if (error) setError(error.message);
+          else setUsers(data);
+          setLoading(false);
+      };
+      
+      useEffect(() => {
+          fetchUsers();
+      }, []);
+      
+      const startEditing = (user) => {
+        setEditUserId(user.id);
+        setEditFormData({
+            name: user.name,
+            username: user.username,
+            email: user.email,
+            company: user.company
+        });
+    };
+
+    const handleEditChange = (e) => {
+        const { name, value } = e.target;
+        setEditFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const saveEdit = async (id) => {
         try {
-        const res = await fetch(API_URL);
-        if (!res.ok) throw new Error('Failed to fetch users');
-        const data = await res.json();
-        setUsers(data);
+            const { error } = await supabase
+                .from('users')
+                .update(editFormData)
+                .eq('id', id);
+            if (error) throw error;
+
+            setUsers(prev =>
+                prev.map(user => (user.id === id ? { ...user, ...editFormData } : user))
+            );
+            setEditUserId(null);
         } catch (err) {
-        setError(err.message);
-        } finally {
-        setLoading(false);
+            alert('Failed to update user: ' + err.message);
         }
     };
 
-    // ---------- POST: Add new user ----------
-    const addUser = async () => {
-        try {
-        const res = await fetch(API_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name: newUserName }),
-        });
-        const newUser = await res.json();
-        setUsers(prev => [...prev, newUser]);
-        setNewUserName('');
-        } catch (err) {
-        alert('Failed to add user.');
-        }
+    const cancelEdit = () => {
+        setEditUserId(null);
     };
 
-    // ---------- PUT: Update user name ----------
-    const updateUser = async (id) => {
-        const updatedName = prompt('Enter new name:');
-        if (!updatedName) return;
-        try {
-        const res = await fetch(`${API_URL}/${id}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name: updatedName }),
-        });
-        const updated = await res.json();
-        setUsers(prev =>
-            prev.map(user => (user.id === id ? { ...user, name: updated.name } : user))
-        );
-        } catch {
-        alert('Failed to update user.');
-        }
-    };
+
 
     // ---------- DELETE: Remove user ----------
     const deleteUser = async (id) => {
         try {
-        await fetch(`${API_URL}/${id}`, {
-            method: 'DELETE',
-        });
-        setUsers(prev => prev.filter(user => user.id !== id));
-        } catch {
-        alert('Failed to delete user.');
+            const { error } = await supabase
+                .from('users')
+                .delete()
+                .eq('id', id);
+
+            if (error) throw error;
+
+            setUsers(prev => prev.filter(user => user.id !== id));
+        } catch (err) {
+            alert('Failed to delete user: ' + err.message);
         }
     };
+
 
     const navigate = useNavigate();
 
@@ -110,20 +121,36 @@ function EditPage(){
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody>
-                    {users.map(user => (
-                        <tr key={user.id}>
-                        <td className='list-of-users-id'><strong>[{user.id}]</strong></td>
-                        <td className='list-of-users-name'>{user.name}</td>
-                        <td>{user.username}</td>
-                        <td>{user.email}</td>
-                        <td>{user.company['name']}</td>
-                        <td>
-                            <a className="edit-icon"onClick={() => updateUser(user.id)}><Pencil size={18}/></a>
-                            <a className="delete-icon"  onClick={() => deleteUser(user.id)}><Trash size={18}/></a></td>
-                        </tr>
+                    <tbody>
+                        {users.map(user => (
+                            <tr key={user.id}>
+                                <td><strong>{user.id}</strong></td>
+                                {editUserId === user.id ? (
+                                    <>
+                                        <td><input className="inline-input" name="name" value={editFormData.name} onChange={handleEditChange} /></td>
+                                        <td><input className="inline-input" name="username" value={editFormData.username} onChange={handleEditChange} /></td>
+                                        <td><input className="inline-input" name="email" value={editFormData.email} onChange={handleEditChange} /></td>
+                                        <td><input className="inline-input" name="company" value={editFormData.company} onChange={handleEditChange} /></td>
+                                        <td>
+                                            <button onClick={() => saveEdit(user.id)}>Save</button>
+                                            <button onClick={cancelEdit}>Cancel</button>
+                                        </td>
+                                    </>
+                                ) : (
+                                    <>
+                                        <td>{user.name}</td>
+                                        <td>{user.username}</td>
+                                        <td>{user.email}</td>
+                                        <td>{user.company}</td>
+                                        <td>
+                                            <a className="edit-icon" onClick={() => startEditing(user)}><Pencil size={18}/></a>
+                                            <a className="delete-icon" onClick={() => deleteUser(user.id)}><Trash size={18}/></a>
+                                        </td>
+                                    </>
+                                )}
+                            </tr>
                         ))}
-                </tbody>
+                    </tbody>
                 </table>
             </div>
         </div>

@@ -1,33 +1,50 @@
-import { Link } from "react-router-dom";
-import { Plus, Pencil, LayoutDashboard, ClipboardMinus, LogOut } from "lucide-react";
-import "./sidebar.css";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { Home, Users, Edit, ClipboardList, LogOut } from 'lucide-react';
+import { NavLink } from 'react-router-dom';
+import '../components/sidebar.css'; // Create this CSS file
 
-
-function Sidebar (){
-    const navigate = useNavigate();
-
-    const handleLogout = () =>{
-        navigate('/');
-    }
-    return(
-        <nav className="sidebar">
+function Sidebar({ isOpen, toggleSidebar }) { // Receive isOpen and toggleSidebar props
+    return (
+        <div className={`sidebar-container ${isOpen ? 'open' : ''}`}>
             <div className="sidebar-header">
-                <h1>Admin Panel</h1>
+                <h2>Admin Panel</h2>
             </div>
-            <div className="sidebar-buttons">
-                <ul id="sidebar-links">
-                    <li className="sidebar-links-2"><Link to="/DashboardPage/dashboard"><LayoutDashboard />Dashboard</Link></li>
-                    <li className="sidebar-links-2"><Link to="/DashBoardPage/add"><Plus/>Add</Link></li>
-                    <li className="sidebar-links-2"><Link to="/DashboardPage/edit"><Pencil/>Edit</Link></li>
-                    <li className="sidebar-links-2"><Link to="/DashboardPage/report"><ClipboardMinus/>Reports</Link></li>
+            <nav className="sidebar-nav">
+                <ul>
+                    <li>
+                        <NavLink to="/DashboardPage/overview" onClick={toggleSidebar}>
+                            <Home size={20} />
+                            Overview
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/DashboardPage/add" onClick={toggleSidebar}>
+                            <Users size={20} />
+                            Add User
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/DashboardPage/edit" onClick={toggleSidebar}>
+                            <Edit size={20} />
+                            Manage Records
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/DashboardPage/report" onClick={toggleSidebar}>
+                            <ClipboardList size={20} />
+                            User Reports
+                        </NavLink>
+                    </li>
                 </ul>
+            </nav>
+            <div className="sidebar-footer">
+                <NavLink to="/" onClick={toggleSidebar}>
+                    <LogOut size={20} />
+                    Logout
+                </NavLink>
             </div>
-            <div className="logout-container">
-                <button id='logout-button' onClick={handleLogout}><LogOut/></button>
-            </div>
-        </nav>
-    )
+        </div>
+    );
 }
 
 export default Sidebar;

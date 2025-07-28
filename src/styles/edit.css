@@ -80,4 +80,43 @@
 .table-container{
     border: 1px solid var(--body-color);
     border-radius: 12px;
+    padding:0;
+    overflow: auto;
+    max-height: 100%;
+
+}
+
+
+.inline-input {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid #ce2222;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #413e3e;
+  transition: border 0.2s ease;
+  color:white
+}
+
+.inline-input:focus {
+  outline: none;
+  border-color: var(--accent-color, #6c63ff); /* customize as needed */
+  background-color: #fff;
+}
+@media (max-width: 768px) {
+    .table-container {
+        overflow-x: auto; /* Enable horizontal scrolling for tables */
+    }
+    .list-of-users {
+        min-width: 600px; /* Ensure table doesn't shrink too much */
+    }
+    .edit-header-container {
+        flex-direction: column; /* Stack header elements */
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .add-page-button {
+        width: 100%; /* Full width button */
+        justify-content: center;
+    }
 }

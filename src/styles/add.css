@@ -43,7 +43,8 @@
     border: 1px solid var(--body-color);
     border-radius: 6px;
     background-color:rgb(44, 44, 44);
-    color: white
+    color: white;
+    padding-left: 10px;
 }
 .input-button{
     display:flex;
@@ -52,4 +53,19 @@
     width:100px;
     gap: 8px;
     height: 40px
+}
+@media (max-width: 768px) {
+    .add-form-container {
+        padding: 15px;
+    }
+    .add-form {
+        gap: 15px;
+    }
+    .input-form {
+        width: 100%; /* Full width inputs */
+    }
+    .input-button {
+        width: 100%; /* Full width button */
+        justify-content: center;
+    }
 }

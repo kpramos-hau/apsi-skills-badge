@@ -56,3 +56,15 @@
 #link{
     font-size: 12px;;
 }
+@media (max-width: 768px) {
+    .login-element {
+        width: 90%; /* Make login box wider on smaller screens */
+        padding: 20px;
+    }
+    .input-container input {
+        font-size: 1em; /* Adjust font size */
+    }
+    .sign-in {
+        width: 100%; /* Full width button */
+    }
+}
