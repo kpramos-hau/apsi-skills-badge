@@ -1,0 +1,42 @@
+:root{
+  /* --body-color:#424242; */
+  --body-color:#dfdfdf;
+  --main-color:#252526;
+  --contrast:#B02AF8;
+  --border:#B02AF8;
+  --button:#989995;
+  --on-hover-button: #9226cc;
+  /* --main-color-2: */
+}
+
+/* global css */
+button {
+  border: none;
+  outline: 1px solid var(--border);  
+  outline-offset: 2px;               
+  background-color: var(--contrast);
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover{
+  background-color: var(--on-hover-button);
+
+}
+
+a{
+  color:white;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+
+a:hover{
+  color:#6d6d6d
+}
+
+li{
+  list-style: none;
+  text-decoration: none;
+}

@@ -1,0 +1,43 @@
+.main-actions-container{
+    flex-direction: column;
+    display: flex;
+    align-content: center;
+    text-align: left;
+    background-color: var(--main-color);
+    padding: 20px;
+}
+
+
+.main-content-container {
+  display: flex;
+  height: 100vh;     /* Full viewport height */
+  width: 100vw;      /* Full viewport width */
+  overflow: hidden;
+}
+
+.main-content-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+.admin-content-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  overflow-y: auto;
+  background-color: var(--body-color); /* Or whatever you want */
+}
+@media (max-width: 768px) {
+    .admin-content-container {
+        padding: 12px; /* Reduce padding on mobile */
+        margin-left: 0; /* No permanent margin on mobile */
+    }
+    .hamburger-menu {
+        display: none; /* Hide hamburger on desktop */
+    }
+    .admin-content-container {
+        margin-left: 0; /* No shift needed on desktop */
+    }
+}

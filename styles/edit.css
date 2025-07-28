@@ -1,0 +1,122 @@
+.main-actions-container{
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    outline: 2px solid var(--main-color); 
+    outline-offset: 2px;  
+    padding: 18px
+}
+
+
+.list-of-users{
+    gap:12px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.list-of-users td,
+.list-of-users th {
+    border: 0px solid #999 !important;
+    color: #fff;
+    padding: 12px;
+}
+
+.list-of-users tr:nth-child(even) {
+    background-color: #2e2e2e;
+}
+
+
+
+.list-of-users tr:nth-child(odd) {
+    background-color: var(--main-color);
+}
+
+.table-container{
+    padding: 12px;
+}
+
+.edit-icon, .delete-icon {
+    margin-right: 10px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+
+.edit-icon svg {
+    color: #8a70e9; 
+    transition: color 0.2s;
+}
+
+.delete-icon svg {
+    color: #c2264d; 
+    transition: color 0.2s;
+}
+
+.edit-icon:hover svg {
+    color: #b4a2f7; 
+}
+
+.delete-icon:hover svg {
+    color: #e57373;
+}
+
+.add-page-button{
+    width: 100px;
+    height: 40px;
+    display: flex;
+    gap:5px;
+    align-items: center;
+    padding: 5px;
+}
+
+.edit-header-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table-container{
+    border: 1px solid var(--body-color);
+    border-radius: 12px;
+    padding:0;
+    overflow: auto;
+    max-height: 100%;
+
+}
+
+
+.inline-input {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid #ce2222;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #413e3e;
+  transition: border 0.2s ease;
+  color:white
+}
+
+.inline-input:focus {
+  outline: none;
+  border-color: var(--accent-color, #6c63ff); /* customize as needed */
+  background-color: #fff;
+}
+@media (max-width: 768px) {
+    .table-container {
+        overflow-x: auto; /* Enable horizontal scrolling for tables */
+    }
+    .list-of-users {
+        min-width: 600px; /* Ensure table doesn't shrink too much */
+    }
+    .edit-header-container {
+        flex-direction: column; /* Stack header elements */
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .add-page-button {
+        width: 100%; /* Full width button */
+        justify-content: center;
+    }
+}
