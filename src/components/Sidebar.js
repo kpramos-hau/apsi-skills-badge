@@ -9,7 +9,6 @@ function Sidebar({ isOpen, toggleSidebar }) { // Receive isOpen and toggleSideba
             <div className="sidebar-header">
                 <h2>Admin Panel</h2>
             </div>
-<<<<<<< HEAD
             <nav className="sidebar-nav">
                 <ul>
                     <li>
@@ -36,14 +35,6 @@ function Sidebar({ isOpen, toggleSidebar }) { // Receive isOpen and toggleSideba
                             User Reports
                         </NavLink>
                     </li>
-=======
-            <div className="sidebar-buttons">
-                <ul id="sidebar-links">
-                    <li className="sidebar-links-2"><Link to="/DashboardPage/overview"><LayoutDashboard />Dashboard</Link></li>
-                    <li className="sidebar-links-2"><Link to="/DashBoardPage/add"><Plus/>Add</Link></li>
-                    <li className="sidebar-links-2"><Link to="/DashboardPage/edit"><Pencil/>Edit</Link></li>
-                    <li className="sidebar-links-2"><Link to="/DashboardPage/report"><ClipboardMinus/>Reports</Link></li>
->>>>>>> 4b3cd870dc0c2b0d8b7798d4d826e356deca2d00
                 </ul>
             </nav>
             <div className="sidebar-footer">
