@@ -43,25 +43,55 @@ body{
 .main-content {
     display: flex;
     padding-top: 250px; 
-    padding-left: 70px;
-    padding-right: 12px;
     padding-bottom: 125px;
     gap:12px;
-    background-color: var(--body-color);
-    color: rgb(34, 34, 34);
+    background-color: var(--main-color);
+    color: rgb(252, 252, 252);
+    justify-content: center;
+    border-bottom: 1px solid rgb(63, 63, 63);
 }
 
+.hero-text{
+    text-align: center;
+    font-size: 50px;
+    width: 100%;
+    max-width: 1000px;
+    font-family: 'IBM Plex Mono', monospace;
+    
+}
 .left-text{
     max-width: 500px;
+    flex-direction: column;
+    text-align: center;
+    display: flex;
+    justify-content:center ;
+    align-items: center;
+    gap: 12px;
 }
 
+.left-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-group{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
 .about{
     display: flex;
     background-color: var(--main-color);
     align-items: center;
     padding:120px;
     flex-direction: column;
-    gap: 80px
+    gap: 30px
+}
+.darker-text{
+    color: rgb(128, 128, 128);
 }
 
 .cards-container{

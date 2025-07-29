@@ -1,7 +1,7 @@
 import { Navigation } from 'lucide-react';
 import '../styles/login.css'
 import { useNavigate } from "react-router-dom";
-
+import 'animate.css';
 
 function LoginPage(){
     // Navigation
@@ -16,8 +16,8 @@ function LoginPage(){
     }
     // Navigation
     return(
-        <div className="main-login">  
-            <div className="login-element">
+        <div className="main-login ">  
+            <div className="login-element animate__animated animate__fadeIn animate__faster">
                 <h1>Login</h1>
                 <div className='input-container'>
                     <input className='text-box' type="text" placeholder="Username"></input>

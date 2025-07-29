@@ -4,8 +4,37 @@
     align-items: center;
     max-width: 100vw;
     width: 100%;
-    padding: 18px 28px;
+    padding: 32px;
+    max-height: 100px;
     background-color: var(--main-color);
     position: fixed;
-    /* box-shadow: 2px 2px 5px rgb(103, 103, 103), -2px -2px 5px rgb(103, 103, 103); */
+    border-bottom: 1px solid rgb(63, 63, 63);
+    z-index: 1000;
+}
+
+.image-logo{
+    height: 75px;
+    width: 75x;
+}
+
+.left{
+    padding: 0;
+    margin: 0;
+}
+
+.right{
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.header-list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vertical-line {
+  border-left: 2px solid #444;
+  height: 30px;
 }

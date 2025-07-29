@@ -79,23 +79,3 @@ function AddPage(){
 }
 
 export default AddPage;
-            // <div className='add-user-form' style={{ marginBottom: '10px' }}>
-            //     <input
-            //         type="text"
-            //         value={newUserName}
-            //         placeholder="New user name"
-            //         onChange={e => setNewUserName(e.target.value)}
-            //     />
-            //     <button onClick={addUser}>Add User</button>
-            // </div>
-
-            // {users.length > 0 && (
-            //     <div>
-            //         <h3>Added Users:</h3>
-            //         <ul>
-            //             {users.map(user => (
-            //                 <li key={user.id}>{user.name}</li>
-            //             ))}
-            //         </ul>
-            //     </div>
-            // )}
