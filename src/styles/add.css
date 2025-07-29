@@ -54,3 +54,18 @@
     gap: 8px;
     height: 40px
 }
+@media (max-width: 768px) {
+    .add-form-container {
+        padding: 15px;
+    }
+    .add-form {
+        gap: 15px;
+    }
+    .input-form {
+        width: 100%; /* Full width inputs */
+    }
+    .input-button {
+        width: 100%; /* Full width button */
+        justify-content: center;
+    }
+}

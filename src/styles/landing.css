@@ -69,3 +69,24 @@ body{
     justify-content: space-between;
     gap:100px;
 }
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column; /* Stack content vertically */
+        padding: 50px 20px; /* Adjust padding */
+        text-align: center;
+    }
+    .left-text {
+        max-width: 100%; /* Full width text */
+    }
+    .right-content {
+        display: none; /* Hide illustrative content if it takes too much space */
+    }
+    .about {
+        padding: 50px 20px; /* Adjust padding */
+    }
+    .cards-container {
+        flex-direction: column; /* Stack profile cards vertically */
+        gap: 30px; /* Adjust gap */
+        align-items: center; /* Center cards */
+    }
+}

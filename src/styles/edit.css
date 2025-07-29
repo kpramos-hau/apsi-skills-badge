@@ -103,3 +103,23 @@
   border-color: var(--accent-color, #6c63ff); /* customize as needed */
   background-color: #fff;
 }
+<<<<<<< HEAD
+@media (max-width: 768px) {
+    .table-container {
+        overflow-x: auto; /* Enable horizontal scrolling for tables */
+    }
+    .list-of-users {
+        min-width: 600px; /* Ensure table doesn't shrink too much */
+    }
+    .edit-header-container {
+        flex-direction: column; /* Stack header elements */
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .add-page-button {
+        width: 100%; /* Full width button */
+        justify-content: center;
+    }
+}
+=======
+>>>>>>> 4b3cd870dc0c2b0d8b7798d4d826e356deca2d00
