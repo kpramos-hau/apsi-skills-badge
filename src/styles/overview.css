@@ -103,6 +103,7 @@
     gap: 0.5rem;
     box-shadow: 0 4px 10px rgba(138, 43, 226, 0.3);
 }
+<<<<<<< HEAD
 @media (max-width: 768px) {
     .dashboard-main-content {
         padding: 10px;
@@ -124,3 +125,5 @@
         padding: 12px;
     }
 }
+=======
+>>>>>>> 4b3cd870dc0c2b0d8b7798d4d826e356deca2d00

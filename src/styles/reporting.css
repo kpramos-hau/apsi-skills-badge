@@ -74,6 +74,7 @@ table {
     overflow: auto;
     max-height: 100%;
 
+<<<<<<< HEAD
 }
 @media (max-width: 768px) {
     .table-container {
@@ -91,4 +92,6 @@ table {
         width: 100%; /* Full width button */
         justify-content: center;
     }
+=======
+>>>>>>> 4b3cd870dc0c2b0d8b7798d4d826e356deca2d00
 }
