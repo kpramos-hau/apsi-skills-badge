@@ -22,7 +22,7 @@ function LoginPage(){
                 <div className='text-image-container'> 
                     <p>-</p>
                     <img src="https://a.ppy.sh/12028437?1753715495.jpeg" className='img-handle' alt='MiggiePic'></img>
-                    <a className='p-text-formal'> @Miggies (Developer)</a>
+                    <a className='p-text-formal' href="https://osu.ppy.sh/users/12028437/" rel="noopener noreferrer"> @Miggies (Developer)</a>
                 </div>
                 </div>
             <div className='right-login'>
