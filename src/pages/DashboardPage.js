@@ -1,6 +1,6 @@
 import Sidebar from '../components/Sidebar';
 import '../styles/dashboard.css';
-import React, { useState } from 'react'; // Import React and useState
+import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Menu } from 'lucide-react'; // Import Menu icon
 
@@ -13,14 +13,19 @@ function DashboardPage() {
 
     return (
         <div className='main-content-container'>
-            <div className="hamburger-menu" onClick={toggleSidebar}> {/* Hamburger icon */}
-                <Menu size={30} color="Purple" />
-            </div>
+            {/* Conditionally render the hamburger icon based on isSidebarOpen */}
+            {!isSidebarOpen && (
+                <div className="hamburger-menu" onClick={toggleSidebar}>
+                    <Menu size={30} color="Purple" />
+                </div>
+            )}
+
             <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} /> {/* Pass isOpen and toggleSidebar to Sidebar */}
+
             <main className={`admin-content-container ${isSidebarOpen ? 'shifted' : ''}`}> {/* Add shifted class */}
                 <Outlet className="admin-content"/>
             </main>
-        </div>    
+        </div>
     );
 }
 
